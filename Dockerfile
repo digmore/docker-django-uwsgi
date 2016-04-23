@@ -8,13 +8,14 @@ RUN apt-get update \
 		libpcre3-dev \
 		python-dev \
                 python-pip \
+                python-psycopg2 \
         && rm -fr /var/lib/apt/lists/* \
         && rm -fr /tmp/* \
         && rm -fr /var/tmp/*
 
 # Set up package and requirements
 RUN mkdir -p /opt/django
-RUN pip install django uwsgi
+RUN pip install django uwsgi whitenoise
 COPY uwsgi.ini /etc/uwsgi.ini
 
 EXPOSE 8080 9191
