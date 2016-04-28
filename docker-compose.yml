@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  uwsgi:
+    restart: always
+    container_name: django-uwsgi
+    image: digmore/docker-django-uwsgi
+    volumes:
+      - "./my_django_website/:/opt/django/"
+      - "./uwsgi.ini:/etc/uwsgi.ini"
+    ports:
+      - "8080:8080"
+      - "9191:9191"
+
